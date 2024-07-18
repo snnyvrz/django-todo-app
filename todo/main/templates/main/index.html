@@ -1,0 +1,7 @@
+{% if latest_todo_items %}
+<ul>
+  {% for item in latest_todo_items %}
+  <li><a href="{{% url 'detail' item.uuid %}}">{{ item.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}
