@@ -1,7 +1,13 @@
-{% if latest_todo_items %}
-<ul>
-  {% for item in latest_todo_items %}
-  <li><a href="{{% url 'detail' item.uuid %}}">{{ item.title }}</a></li>
-  {% endfor %}
-</ul>
-{% endif %}
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+  {% if latest_todo_items %}
+  <ul>
+    {% for item in latest_todo_items %}
+    <li><a href="{% url 'detail' item.uuid %}">{{ item.title }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %} 
+  </div>
+  {% endblock %}
+</div>
