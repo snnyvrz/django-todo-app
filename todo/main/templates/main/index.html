@@ -1,10 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container-fluid">
+<div class="container-lg border rounded p-4">
+<form action="{% url 'main:add' %}" method="post" autocomplete="off">
+  {% csrf_token %}
+  <h1>Add Something To Do Later</h1>
+  <fieldset>
+  <div class="form-floating mb-3">
+    <input type="text" name="title" id="title" class="form-control" />
+    <label for="title">Title</label>
+    </div>
+    <div class="form-floating mb-3">
+    <input type="text" name="datetime" id="datetime" class="form-control datetimepicker" />
+    <label for="datetime">Date/Time</label>
+    </div>
+  </fieldset>
+  <input type="submit" value="Add" class="btn btn-primary" />
+</form>
+</div>
   {% if latest_todo_items %}
   <ul>
     {% for item in latest_todo_items %}
-    <li><a href="{% url 'detail' item.uuid %}">{{ item.title }}</a></li>
+    <li><a href="{% url 'main:detail' item.uuid %}">{{ item.title }}</a></li>
     {% endfor %}
   </ul>
   {% endif %} 
