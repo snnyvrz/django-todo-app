@@ -4,7 +4,7 @@ from . import views
 
 app_name = "main"
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.IndexView.as_view(), name="index"),
     path("add/", views.add, name="add"),
-    path("<str:uuid>/", views.detail, name="detail"),
+    path("<slug:uuid>/", views.DetailView.as_view(), name="detail"),
 ]
